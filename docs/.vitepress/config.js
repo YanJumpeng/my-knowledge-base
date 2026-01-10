@@ -1,6 +1,6 @@
 export default {
-  title: "我的知识库", // 网站左上角标题
-  description: "记录 AI 学习与加密投研点滴",
+  title: "严jump的知识库", // 网站左上角标题
+  description: "记录 AI 学习、加密媒体与加密投研点滴",
   themeConfig: {
     // 1. 顶部导航栏
     nav: [
@@ -56,3 +56,4 @@ export default {
     }
   }
 }
+
