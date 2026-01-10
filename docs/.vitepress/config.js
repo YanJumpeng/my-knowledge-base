@@ -1,6 +1,9 @@
 export default {
   title: "Yan's Digital Garden",
   description: "加密媒体观察者 | AI 效能探索 | 终身学习者",
+  // --- 在这里添加下面这一行 ---
+  ignoreDeadLinks: true, 
+  // -------------------------
   
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
 
@@ -74,6 +77,7 @@ export default {
     }
   }
 }
+
 
 
 
