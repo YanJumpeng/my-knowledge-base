@@ -46,6 +46,7 @@ export default {
           items: [
             { text: '🗺️ 学习路线图', link: '/ai-learning/roadmap' },
             { text: '🛠️ AI 工具库', link: '/ai-learning/ai-tools' },
+            { text: '✍️ 学习笔记(新)', link: '/ai-learning/Learn' },
             { text: '📅 Week 1: 基础起步', link: '/ai-learning/week1' },
             { text: '📅 Week 2: 实战进阶', link: '/ai-learning/week2' }
           ]
@@ -73,4 +74,5 @@ export default {
     }
   }
 }
+
 
