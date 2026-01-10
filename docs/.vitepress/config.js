@@ -16,7 +16,7 @@ export default {
         ] 
       },
       { text: '🤖 AI 学习', link: '/ai-learning/roadmap' },
-      { text: '👤 关于我', link: '/projects/about' }
+      { text: '👤 关于我', link: '/about' } // 如果文件名是 about.md
     ],
 
     sidebar: {
@@ -73,3 +73,4 @@ export default {
     }
   }
 }
+
