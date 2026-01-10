@@ -1,8 +1,9 @@
-// 直接这样开始，不要写 import { defineConfig } from 'vitepress'
 export default {
   title: "Yan's Digital Garden",
-  description: "加密媒体观察者 | AI 效能探索",
-  // ... 后面的 themeConfig 部分保持原样不变 ...
+  description: "加密媒体观察者 | AI 效能探索 | 终身学习者",
+  
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+
   themeConfig: {
     nav: [
       { text: '✨ 首页', link: '/' },
@@ -18,13 +19,11 @@ export default {
       { text: '👤 关于我', link: '/projects/about' }
     ],
 
-    // 2. 左侧侧边栏 (Sidebar)
     sidebar: {
-      // 加密媒体模块
       '/crypto/': [
         {
           text: '🎙️ 媒体人视界',
-          collapsed: false, // 默认展开
+          collapsed: false,
           items: [
             { text: '📊 叙事逻辑与观察', link: '/crypto/observation' },
             { text: '✍️ 深度报道精选', link: '/crypto/reports' },
@@ -33,15 +32,13 @@ export default {
         },
         {
           text: '🤝 行业连接 (Coming)',
-          collapsed: true, // 默认折叠
+          collapsed: true,
           items: [
             { text: '🎤 一线访谈录', link: '/crypto/interviews' },
             { text: '🔗 行业资源池', link: '/crypto/resources' }
           ]
         }
       ],
-
-      // AI 学习模块
       '/ai-learning/': [
         {
           text: '🤖 AI 进化记录',
@@ -56,30 +53,23 @@ export default {
       ]
     },
 
-    // 3. 社交链接
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/YanJumpeng/my-knowledge-base' },
-      // 建议加上 Twitter 或 X，这对加密媒体人非常重要
-      // { icon: 'twitter', link: 'https://twitter.com/你的账号' }
+      { icon: 'github', link: 'https://github.com/YanJumpeng/my-knowledge-base' }
     ],
 
-    // 4. 搜索配置 (VitePress 内置局部搜索)
     search: {
       provider: 'local'
     },
 
-    // 5. 页脚配置
     footer: {
       message: '用文字记录 Web3 的进化，用 AI 赋能个体成长',
       copyright: 'Copyright © 2026-Present | Yan Jumpeng'
     },
 
-    // 6. 辅助功能
     lastUpdatedText: '最后更新时间',
     docFooter: {
       prev: '上一页',
       next: '下一页'
     }
   }
-})
-
+}
