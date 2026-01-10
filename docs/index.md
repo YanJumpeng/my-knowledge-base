@@ -2,16 +2,16 @@
 layout: home
 
 hero:
-  name: "严的知识库"
-  text: "记录 AI 学习、加密媒体与加密投研点滴"
-  tagline: "持续输出，终身成长"
+  name: "Yan's Digital Garden"
+  text: "加密媒体观察者 | AI 效能探索"
+  tagline: "用文字记录 Web3 的进化，用 AI 赋能个体成长"
   actions:
     - theme: brand
-      text: 快速开始
-      link: /crypto/index
+      text: 🎙️ 媒体人视界
+      link: /crypto/observation
     - theme: alt
-      text: 关于我
-      link: /contact
+      text: 🤖 AI 学习笔记
+      link: /ai-learning/roadmap
 
 features:
   - icon: 🎙️
