@@ -6,6 +6,7 @@ export default {
     nav: [
       { text: '首页', link: '/' },
       { text: '加密投研', link: '/crypto/' },
+      { text: '加密媒体', link: '/media/' },
       { text: 'AI学习', link: '/ai-learning/' },
       { text: '关于我', link: '/about' }
     ],
@@ -56,4 +57,5 @@ export default {
     }
   }
 }
+
 
