@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "我的知识库"
-  text: "记录 AI 学习与加密投研点滴"
+  name: "严的知识库"
+  text: "记录 AI 学习、加密媒体与加密投研点滴"
   tagline: "持续输出，终身成长"
   actions:
     - theme: brand
