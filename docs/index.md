@@ -14,13 +14,13 @@ hero:
       link: /contact
 
 features:
-  - icon: 📊
-    title: 加密投研
-    details: 3年行业经验，分享深度研报与投资方法论。
+  - icon: 🎙️
+    title: 加密媒体视角
+    details: 在噪音中寻找信号，记录 Web3 叙事的演进与传播路径。
   - icon: 🤖
-    title: AI 学习笔记
-    details: 从零开始学习 Python 与 AI API 实战记录。
-  - icon: 🚀
-    title: 项目实战
-    details: 记录从想法到上线的每一个项目开发全过程。
+    title: AI 赋能探索
+    details: 学习利用 AI 工具提升信息处理效率，构建个人第二大脑。
+  - icon: 🔗
+    title: 行业资源链接
+    details: 整合一线资源，链接深度内容，搭建 Web3 价值网络。
 ---
