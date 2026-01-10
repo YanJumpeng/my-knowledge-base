@@ -1,17 +1,9 @@
-import { defineConfig } from 'vitepress'
-
-export default defineConfig({
-  title: "Yan's Digital Garden", // 建议用你的名字，更有辨识度
-  description: "加密媒体观察者 | AI 效能探索 | 终身学习者",
-  
-  // 浏览器标签页图标 (如果有 favicon.ico 的话)
-  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
-
+// 直接这样开始，不要写 import { defineConfig } from 'vitepress'
+export default {
+  title: "Yan's Digital Garden",
+  description: "加密媒体观察者 | AI 效能探索",
+  // ... 后面的 themeConfig 部分保持原样不变 ...
   themeConfig: {
-    // 网站标志旁边的文字
-    logo: '', 
-    
-    // 1. 顶部导航栏 (Nav)
     nav: [
       { text: '✨ 首页', link: '/' },
       { 
@@ -90,3 +82,4 @@ export default defineConfig({
     }
   }
 })
+
