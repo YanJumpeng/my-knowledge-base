@@ -71,6 +71,10 @@ export default defineConfig({
             { 
               text: '🚀 Claude Artifacts 部署指南', 
               link: '/ai-learning/claude-artifacts-deployment' 
+            },
+            { 
+              text: '📄 GitHub Pages 快速部署', 
+              link: '/ai-learning/github-pages-deployment' 
             }
           ]
         }
