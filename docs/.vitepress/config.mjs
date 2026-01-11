@@ -4,6 +4,10 @@ export default defineConfig({
   title: "Yan's Digital Garden",
   description: "加密媒体观察者 | AI 效能探索 | 终身学习者",
   lang: 'zh-CN',
+
+  vite: {
+    publicDir: '../public',  // 确保 public 文件夹被正确识别
+  },
   
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
@@ -91,4 +95,5 @@ export default defineConfig({
     }
   }
 })
+
 
