@@ -6,7 +6,7 @@ title: 编程技术全景图
 <script setup>
 import { ref } from 'vue'
 
-const techData = {
+const techData = ref({
   frontend: {
     title: '前端开发（用户看到的界面）',
     icon: '🎨',
@@ -19,7 +19,7 @@ const techData = {
         useCase: '所有网页/Web应用的基础，AI产品的界面层'
       },
       {
-        title: '现代框架（构建复杂应用）',
+        title: '现代框架',
         techs: ['React', 'Next.js', 'Vue', 'Svelte'],
         hot: [0, 1],
         useCase: 'ChatGPT网页版、Notion等复杂交互应用'
@@ -39,13 +39,13 @@ const techData = {
     categories: [
       {
         title: '主流语言',
-        techs: ['Python', 'Node.js/JavaScript', 'Go', 'Java', 'Rust'],
+        techs: ['Python', 'Node.js', 'Go', 'Java', 'Rust'],
         hot: [0, 1],
         useCase: 'API开发、数据处理、业务逻辑'
       },
       {
         title: 'Web框架',
-        techs: ['FastAPI (Python)', 'Django (Python)', 'Express (Node.js)', 'Spring Boot (Java)'],
+        techs: ['FastAPI', 'Django', 'Express', 'Spring Boot'],
         hot: [0, 2],
         useCase: '构建RESTful API、处理HTTP请求'
       },
@@ -64,7 +64,7 @@ const techData = {
     categories: [
       {
         title: 'AI开发语言',
-        techs: ['Python（主导）', 'R（数据科学）', 'Julia（科学计算）'],
+        techs: ['Python', 'R', 'Julia'],
         ai: [0],
         useCase: '几乎所有AI项目都用Python'
       },
@@ -82,7 +82,7 @@ const techData = {
       },
       {
         title: '快速原型工具',
-        techs: ['Streamlit', 'Gradio', 'Jupyter Notebook'],
+        techs: ['Streamlit', 'Gradio', 'Jupyter'],
         ai: [0, 1],
         useCase: '快速搭建AI演示界面、数据可视化'
       }
@@ -95,7 +95,7 @@ const techData = {
     categories: [
       {
         title: '数据处理库',
-        techs: ['Pandas', 'NumPy', 'Polars', 'Apache Spark'],
+        techs: ['Pandas', 'NumPy', 'Polars', 'Spark'],
         hot: [0],
         useCase: '清洗数据、特征工程、大规模数据处理'
       },
@@ -105,7 +105,7 @@ const techData = {
         useCase: '数据报表、交互式图表、仪表板'
       },
       {
-        title: '向量数据库（AI专用）',
+        title: '向量数据库',
         techs: ['Pinecone', 'Weaviate', 'Chroma', 'Qdrant'],
         ai: [0, 1, 2, 3],
         useCase: '存储embedding、语义搜索、RAG系统'
@@ -119,8 +119,8 @@ const techData = {
     categories: [
       {
         title: '原生开发',
-        techs: ['Swift（iOS）', 'Kotlin（Android）', 'Objective-C', 'Java'],
-        useCase: '性能要求高的App，需要深度系统集成'
+        techs: ['Swift', 'Kotlin', 'Objective-C', 'Java'],
+        useCase: '性能要求高的App，深度系统集成'
       },
       {
         title: '跨平台开发',
@@ -154,49 +154,34 @@ const techData = {
       }
     ]
   }
-}
+})
 
-const timeline = [
+const timeline = ref([
   { year: '1990s', title: 'Web诞生', content: 'HTML, CSS, JavaScript基础。这些技术今天仍在使用，是所有Web的基石。' },
   { year: '2000s', title: '动态网站时代', content: 'PHP, Python, Java后端框架。传统企业应用主流技术，至今仍广泛使用。' },
   { year: '2010-2015', title: '移动互联网爆发', content: 'iOS/Android原生开发、RESTful API、React诞生。这一代技术定义了现代Web开发。' },
   { year: '2015-2020', title: '云原生与深度学习', content: 'Docker/K8s、PyTorch/TensorFlow成熟、React生态繁荣。AI开始进入应用层。' },
   { year: '2020-2023', title: 'AI基础设施', content: 'Transformer模型爆发、LangChain等工具链出现、Vercel等Serverless平台成熟。' },
-  { year: '2023-现在', title: 'AI原生时代', content: 'LLM应用开发、AI Agent框架、向量数据库、Streamlit等快速原型工具成为主流。传统技术+AI能力结合。' }
-]
+  { year: '2023-现在', title: 'AI原生时代', content: 'LLM应用开发、AI Agent框架、向量数据库、Streamlit等快速原型工具成为主流。' }
+])
 
-const stacks = [
+const stacks = ref([
   {
     title: '快速原型（MVP）',
     color: '#667eea',
-    items: [
-      '前端：Streamlit / Gradio',
-      '后端：Python + FastAPI',
-      'AI：OpenAI/Anthropic API',
-      '部署：Hugging Face Spaces'
-    ]
+    items: ['前端：Streamlit / Gradio', '后端：Python + FastAPI', 'AI：OpenAI/Anthropic API', '部署：Hugging Face Spaces']
   },
   {
     title: '生产级应用',
     color: '#4ecdc4',
-    items: [
-      '前端：Next.js + React + Tailwind',
-      '后端：Node.js/Python + PostgreSQL',
-      'AI：LangChain + 向量数据库',
-      '部署：Vercel + AWS'
-    ]
+    items: ['前端：Next.js + React + Tailwind', '后端：Node.js/Python + PostgreSQL', 'AI：LangChain + 向量数据库', '部署：Vercel + AWS']
   },
   {
     title: 'AI研究/模型开发',
     color: '#ff6b6b',
-    items: [
-      '环境：Python + Jupyter',
-      '框架：PyTorch + Transformers',
-      '数据：Pandas + NumPy',
-      '部署：Docker + GPU云服务器'
-    ]
+    items: ['环境：Python + Jupyter', '框架：PyTorch + Transformers', '数据：Pandas + NumPy', '部署：Docker + GPU云']
   }
-]
+])
 </script>
 
 <template>
@@ -210,16 +195,16 @@ const stacks = [
       <h3>📌 图例说明</h3>
       <div class="legend-items">
         <div class="legend-item">
-          <div class="legend-color" style="background: #ff6b6b;"></div>
+          <div class="legend-color hot-color"></div>
           <span>AI时代热门</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background: #4ecdc4;"></div>
+          <div class="legend-color ai-color"></div>
           <span>AI原生技术</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background: #e9ecef;"></div>
-          <span>传统技术（仍在使用）</span>
+          <div class="legend-color normal-color"></div>
+          <span>传统技术</span>
         </div>
       </div>
     </div>
@@ -251,13 +236,13 @@ const stacks = [
               {{ tech }}
             </span>
           </div>
-          <div class="use-case">💡 场景：{{ cat.useCase }}</div>
+          <div class="use-case">💡 {{ cat.useCase }}</div>
         </div>
       </div>
     </div>
 
     <div class="timeline-section">
-      <h3 class="timeline-title">⏳ 技术演进时间线（AI产品视角）</h3>
+      <h3 class="section-title">⏳ 技术演进时间线</h3>
       <div v-for="item in timeline" :key="item.year" class="timeline-item">
         <div class="timeline-year">{{ item.year }}</div>
         <div class="timeline-content">
@@ -267,7 +252,7 @@ const stacks = [
     </div>
 
     <div class="stacks-section">
-      <h3>🎯 AI产品开发典型技术栈</h3>
+      <h3 class="section-title">🎯 典型技术栈</h3>
       <div class="stacks-grid">
         <div 
           v-for="(stack, idx) in stacks" 
@@ -286,10 +271,10 @@ const stacks = [
     <div class="advice-section">
       <h3>💡 核心建议</h3>
       <ul>
-        <li>✓ <strong>传统技术依然重要</strong>：HTML/CSS/JS、Python、数据库等基础技术不会过时</li>
-        <li>✓ <strong>AI时代的新增项</strong>：LangChain、向量数据库、提示工程是新技能</li>
-        <li>✓ <strong>选择原则</strong>：快速验证用Streamlit，生产应用用Next.js，深度定制用原生技术</li>
-        <li>✓ <strong>学习路径</strong>：先掌握Python+基础Web，再学AI工具链，最后补充DevOps</li>
+        <li>✓ 传统技术依然重要：HTML/CSS/JS、Python、数据库等基础不会过时</li>
+        <li>✓ AI时代的新增项：LangChain、向量数据库、提示工程是新技能</li>
+        <li>✓ 选择原则：快速验证用Streamlit，生产应用用Next.js</li>
+        <li>✓ 学习路径：先掌握Python+基础Web，再学AI工具链</li>
       </ul>
     </div>
   </div>
@@ -355,6 +340,10 @@ const stacks = [
   border-radius: 4px;
 }
 
+.hot-color { background: #ff6b6b; }
+.ai-color { background: #4ecdc4; }
+.normal-color { background: #e9ecef; }
+
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -382,6 +371,7 @@ const stacks = [
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #333;
 }
 
 .category-icon {
@@ -441,7 +431,7 @@ const stacks = [
   border-left: 3px solid #dee2e6;
 }
 
-.timeline-section {
+.timeline-section, .stacks-section {
   background: white;
   border-radius: 12px;
   padding: 20px;
@@ -449,7 +439,7 @@ const stacks = [
   margin: 25px auto;
 }
 
-.timeline-title {
+.section-title {
   margin-bottom: 15px;
   color: #333;
 }
@@ -477,18 +467,6 @@ const stacks = [
   background: #f8f9fa;
   padding: 12px;
   border-radius: 8px;
-}
-
-.stacks-section {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto 25px;
-}
-
-.stacks-section h3 {
-  margin-bottom: 15px;
   color: #333;
 }
 
@@ -538,18 +516,18 @@ const stacks = [
 }
 
 @media (max-width: 768px) {
+  .tech-landscape {
+    margin: -1rem -0.75rem -2rem;
+    width: calc(100% + 1.5rem);
+    padding: 20px 10px;
+  }
+  
   .category-grid {
     grid-template-columns: 1fr;
   }
   
   .header h1 {
     font-size: 1.8em;
-  }
-  
-  .tech-landscape {
-    margin: -1rem -0.75rem -2rem;
-    width: calc(100% + 1.5rem);
-    padding: 20px 10px;
   }
   
   .timeline-item {
