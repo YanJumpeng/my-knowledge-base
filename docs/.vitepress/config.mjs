@@ -1,209 +1,119 @@
-// docs/.vitepress/config.js
+================================================================
+复制下面的全部内容到你的 docs/.vitepress/config.mjs 文件中
+================================================================
+
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  // 站点元数据
   title: "Yan's Digital Garden",
-  description: "知识库与观察者 | AI 效能探索",
+  description: "加密媒体观察者 | AI 效能探索 | 终身学习者",
   lang: 'zh-CN',
   
-  // 基础路径（如果部署在子路径下需要配置）
-  // base: '/',
-  
-  // 主题配置
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
+
   themeConfig: {
-    // 顶部导航栏
     nav: [
+      { text: '✨ 首页', link: '/' },
       { 
-        text: '🏠 首页', 
-        link: '/' 
+        text: '🎙️ 加密媒体', 
+        items: [
+          { text: '叙事观察', link: '/crypto/observation' },
+          { text: '深度报道', link: '/crypto/reports' },
+          { text: '媒体方法论', link: '/crypto/methodology' }
+        ] 
       },
       { 
-        text: '🎓 AI 学习',
+        text: '🤖 AI 学习', 
         items: [
-          { 
-            text: '📚 学习笔记', 
-            link: '/ai-learning/' 
-          },
-          { 
-            text: '🗺️ 学习路线图', 
-            link: '/ai-learning/roadmap' 
-          },
-          { 
-            text: '🎨 技术全景图', 
-            link: '/tech-landscape.html' 
-          }
+          { text: '学习路线图', link: '/ai-learning/roadmap' },
+          { text: '技术全景图', link: '/tech-landscape.html' }
         ]
       },
-      { 
-        text: '💰 加密观察', 
-        link: '/crypto/observation' 
-      },
-      { 
-        text: '📁 项目展示', 
-        link: '/projects/' 
-      },
-      { 
-        text: '📰 媒体', 
-        link: '/media/' 
-      }
+      { text: '👤 关于我', link: '/projects/about' }
     ],
 
-    // 侧边栏配置
     sidebar: {
-      // AI 学习板块的侧边栏
-      '/ai-learning/': [
+      '/crypto/': [
         {
-          text: 'AI 学习指南',
+          text: '🎙️ 媒体人视界',
           collapsed: false,
           items: [
-            { 
-              text: '📖 开始学习', 
-              link: '/ai-learning/' 
-            },
-            { 
-              text: '🗺️ 学习路线图', 
-              link: '/ai-learning/roadmap' 
-            },
-            { 
-              text: '🎨 技术全景图', 
-              link: '/tech-landscape.html' 
-            }
+            { text: '📊 叙事逻辑与观察', link: '/crypto/observation' },
+            { text: '✍️ 深度报道精选', link: '/crypto/reports' },
+            { text: '🧠 媒体人方法论', link: '/crypto/methodology' },
           ]
         },
         {
-          text: '学习资源',
+          text: '🤝 行业连接 (Coming)',
+          collapsed: true,
+          items: [
+            { text: '🎤 一线访谈录', link: '/crypto/interviews' },
+            { text: '🔗 行业资源池', link: '/crypto/resources' }
+          ]
+        }
+      ],
+
+      '/ai-learning/': [
+        {
+          text: '🤖 AI 进化记录',
           collapsed: false,
           items: [
-            { 
-              text: '📝 Week 2 笔记', 
-              link: '/ai-learning/week2' 
-            }
-            // 添加更多学习笔记链接
-          ]
-        }
-      ],
-
-      // 加密观察板块的侧边栏
-      '/crypto/': [
-        {
-          text: '加密货币观察',
-          items: [
-            { 
-              text: '📊 市场观察', 
-              link: '/crypto/observation' 
-            }
-          ]
-        }
-      ],
-
-      // 项目板块的侧边栏
-      '/projects/': [
-        {
-          text: '项目展示',
-          items: [
-            { 
-              text: '🚀 所有项目', 
-              link: '/projects/' 
-            }
+            { text: '🗺️ 学习路线图', link: '/ai-learning/roadmap' },
+            { text: '🎨 技术全景图', link: '/tech-landscape.html' },
+            { text: '🛠️ AI 工具库', link: '/ai-learning/ai-tools' },
+            { text: '✍️ 学习笔记(新)', link: '/ai-learning/Learn' },
+            { text: '📅 Week 1: 基础起步', link: '/ai-learning/week1' },
+            { text: '📅 Week 2: 实战进阶', link: '/ai-learning/week2' }
           ]
         }
       ]
     },
 
-    // 社交链接
     socialLinks: [
       { 
         icon: 'github', 
-        link: 'https://github.com/YanJumpeng' 
+        link: 'https://github.com/YanJumpeng/my-knowledge-base' 
       }
     ],
 
-    // 页脚
-    footer: {
-      message: '用文字记录 Web3 的进化 | 用 AI 驱动个人成长',
-      copyright: 'Copyright © 2024-present YanJumpeng'
-    },
-
-    // 编辑链接
-    editLink: {
-      pattern: 'https://github.com/YanJumpeng/my-knowledge-base/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页'
-    },
-
-    // 最后更新时间
-    lastUpdated: {
-      text: '最后更新于',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'short'
-      }
-    },
-
-    // 搜索配置（可选，需要安装插件）
     search: {
-      provider: 'local',
-      options: {
-        locales: {
-          zh: {
-            translations: {
-              button: {
-                buttonText: '搜索文档',
-                buttonAriaLabel: '搜索文档'
-              },
-              modal: {
-                noResultsText: '无法找到相关结果',
-                resetButtonTitle: '清除查询条件',
-                footer: {
-                  selectText: '选择',
-                  navigateText: '切换'
-                }
-              }
-            }
-          }
-        }
-      }
+      provider: 'local'
     },
 
-    // 大纲配置
-    outline: {
-      level: [2, 3],
-      label: '页面导航'
+    footer: {
+      message: '用文字记录 Web3 的进化，用 AI 赋能个体成长',
+      copyright: 'Copyright © 2026-Present | Yan Jumpeng'
     },
 
-    // 返回顶部按钮文字
-    returnToTopLabel: '返回顶部',
+    lastUpdatedText: '最后更新时间',
 
-    // 外部链接图标
-    externalLinkIcon: true,
-
-    // 侧边栏菜单标签
-    sidebarMenuLabel: '菜单',
-
-    // 深色模式切换标签
-    darkModeSwitchLabel: '主题',
-
-    // 浅色/深色模式切换标题
-    lightModeSwitchTitle: '切换到浅色模式',
-    darkModeSwitchTitle: '切换到深色模式'
-  },
-
-  // Markdown 配置
-  markdown: {
-    lineNumbers: true, // 显示代码行号
-    theme: {
-      light: 'github-light',
-      dark: 'github-dark'
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
     }
-  },
-
-  // Head 配置（SEO 优化）
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'theme-color', content: '#667eea' }],
-    ['meta', { name: 'og:type', content: 'website' }],
-    ['meta', { name: 'og:locale', content: 'zh_CN' }],
-    ['meta', { name: 'og:site_name', content: "Yan's Digital Garden" }],
-    ['meta', { name: 'og:image', content: '/og-image.png' }]
-  ]
+  }
 })
+
+================================================================
+操作步骤：
+================================================================
+
+1. 在你的项目中，打开或创建文件：docs/.vitepress/config.mjs
+
+2. 将上面的全部代码复制进去（替换原有内容）
+
+3. 确保 HTML 文件在正确位置：
+   mkdir -p docs/public
+   cp programming_landscape.html docs/public/tech-landscape.html
+
+4. 测试：
+   npm run docs:dev
+
+5. 部署：
+   git add .
+   git commit -m "feat: 添加技术全景图"
+   git push
+
+================================================================
