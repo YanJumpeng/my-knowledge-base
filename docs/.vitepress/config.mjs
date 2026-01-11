@@ -4,7 +4,6 @@ export default defineConfig({
   title: "Yan's Digital Garden",
   description: "加密媒体观察者 | AI 效能探索 | 终身学习者",
   lang: 'zh-CN',
-
   vite: {
     publicDir: '../public',  // 确保 public 文件夹被正确识别
   },
@@ -12,7 +11,6 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
-
   themeConfig: {
     nav: [
       { text: '✨ 首页', link: '/' },
@@ -33,7 +31,6 @@ export default defineConfig({
       },
       { text: '👤 关于我', link: '/projects/about' }
     ],
-
     sidebar: {
       '/crypto/': [
         {
@@ -54,7 +51,6 @@ export default defineConfig({
           ]
         }
       ],
-
       '/ai-learning/': [
         {
           text: '🤖 AI 进化记录',
@@ -67,33 +63,36 @@ export default defineConfig({
             { text: '📅 Week 1: 基础起步', link: '/ai-learning/week1' },
             { text: '📅 Week 2: 实战进阶', link: '/ai-learning/week2' }
           ]
+        },
+        {
+          text: '📚 实战教程',
+          collapsed: false,
+          items: [
+            { 
+              text: '🚀 Claude Artifacts 部署指南', 
+              link: '/ai-learning/claude-artifacts-deployment' 
+            }
+          ]
         }
       ]
     },
-
     socialLinks: [
       { 
         icon: 'github', 
         link: 'https://github.com/YanJumpeng/my-knowledge-base' 
       }
     ],
-
     search: {
       provider: 'local'
     },
-
     footer: {
       message: '用文字记录 Web3 的进化，用 AI 赋能个体成长',
       copyright: 'Copyright © 2026-Present | Yan Jumpeng'
     },
-
     lastUpdatedText: '最后更新时间',
-
     docFooter: {
       prev: '上一页',
       next: '下一页'
     }
   }
 })
-
-
