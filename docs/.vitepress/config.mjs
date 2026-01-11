@@ -24,7 +24,7 @@ export default defineConfig({
         text: '🤖 AI 学习', 
         items: [
           { text: '学习路线图', link: '/ai-learning/roadmap' },
-          { text: '技术全景图', link: '/tech-landscape.html' }
+          { text: '技术全景图', link: '/tech-landscape' }
         ]
       },
       { text: '👤 关于我', link: '/projects/about' }
@@ -57,7 +57,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '🗺️ 学习路线图', link: '/ai-learning/roadmap' },
-            { text: '🎨 技术全景图', link: '/tech-landscape.html' },
+            { text: '🎨 技术全景图', link: '/tech-landscape' },
             { text: '🛠️ AI 工具库', link: '/ai-learning/ai-tools' },
             { text: '✍️ 学习笔记(新)', link: '/ai-learning/Learn' },
             { text: '📅 Week 1: 基础起步', link: '/ai-learning/week1' },
@@ -91,3 +91,4 @@ export default defineConfig({
     }
   }
 })
+
