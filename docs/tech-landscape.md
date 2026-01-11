@@ -27,7 +27,7 @@ title: 编程技术全景图
 
 <div class="tech-landscape-container">
   <iframe 
-    src="/tech-landscape.html" 
+    src="/tech-landscape.htm" 
     class="tech-landscape-iframe"
     frameborder="0"
     title="编程技术全景图 - AI产品开发视角"
