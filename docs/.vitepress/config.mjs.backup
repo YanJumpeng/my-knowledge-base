@@ -1,7 +1,3 @@
-================================================================
-复制下面的全部内容到你的 docs/.vitepress/config.mjs 文件中
-================================================================
-
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
@@ -95,25 +91,3 @@ export default defineConfig({
     }
   }
 })
-
-================================================================
-操作步骤：
-================================================================
-
-1. 在你的项目中，打开或创建文件：docs/.vitepress/config.mjs
-
-2. 将上面的全部代码复制进去（替换原有内容）
-
-3. 确保 HTML 文件在正确位置：
-   mkdir -p docs/public
-   cp programming_landscape.html docs/public/tech-landscape.html
-
-4. 测试：
-   npm run docs:dev
-
-5. 部署：
-   git add .
-   git commit -m "feat: 添加技术全景图"
-   git push
-
-================================================================
