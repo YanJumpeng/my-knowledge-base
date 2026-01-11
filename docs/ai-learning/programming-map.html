@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程技术全景图 - AI产品开发视角</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .legend {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .legend h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .mindmap {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow-x: auto;
+        }
+
+        .center-node {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 40px;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 auto 40px;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .category {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 5px solid;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-icon {
+            font-size: 1.5em;
+        }
+
+        .subcategory {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 2px solid #e9ecef;
+        }
+
+        .subcategory-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #495057;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .tech-tag:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .tech-tag.hot {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .tech-tag.ai {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .use-case {
+            font-size: 0.85em;
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 8px;
+            padding-left: 10px;
+            border-left: 3px solid #dee2e6;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .timeline-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .timeline-year {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        .color-frontend { border-left-color: #61dafb; }
+        .color-backend { border-left-color: #68a063; }
+        .color-ai { border-left-color: #ff6b6b; }
+        .color-data { border-left-color: #ffd93d; }
+        .color-mobile { border-left-color: #a8dadc; }
+        .color-devops { border-left-color: #457b9d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗺️ 编程技术全景图</h1>
+        <p style="text-align: center; color: white; margin-bottom: 30px; font-size: 1.1em;">
+            AI产品开发视角 - 什么场景用什么技术
+        </p>
+
+        <div class="legend">
+            <h3>📌 图例说明</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff6b6b;"></div>
+                    <span>AI时代热门</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4ecdc4;"></div>
+                    <span>AI原生技术</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e9ecef;"></div>
+                    <span>传统技术（仍在使用）</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mindmap">
+            <div class="center-node">
+                编程技术体系
+                <div style="font-size: 0.5em; margin-top: 8px; opacity: 0.9;">
+                    从传统开发到AI时代
+                </div>
+            </div>
+
+            <div class="category-grid">
+                <!-- 前端开发 -->
+                <div class="category color-frontend">
+                    <div class="category-title">
+                        <span class="category-icon">🎨</span>
+                        前端开发（用户看到的界面）
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">核心语言</div>
+                        <div class="tech-list">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag hot">JavaScript</span>
+                            <span class="tech-tag hot">TypeScript</span>
+                        </div>
+                        <div class="use-case">💡 场景：所有网页/Web应用的基础，AI产品的界面层</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">现代框架（构建复杂应用）</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">React</span>
+                            <span class="tech-tag hot">Next.js</span>
+                            <span class="tech-tag">Vue</span>
+                            <span class="tech-tag">Svelte</span>
+                        </div>
+                        <div class="use-case">💡 场景：ChatGPT网页版、Notion等复杂交互应用</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">样式工具</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">Tailwind CSS</span>
+                            <span class="tech-tag">Shadcn/ui</span>
+                            <span class="tech-tag">Bootstrap</span>
+                        </div>
+                        <div class="use-case">💡 场景：快速构建美观界面，AI工具常用</div>
+                    </div>
+                </div>
+
+                <!-- 后端开发 -->
+                <div class="category color-backend">
+                    <div class="category-title">
+                        <span class="category-icon">⚙️</span>
+                        后端开发（服务器/业务逻辑）
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">主流语言</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">Python</span>
+                            <span class="tech-tag hot">Node.js/JavaScript</span>
+                            <span class="tech-tag">Go</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Rust</span>
+                        </div>
+                        <div class="use-case">💡 场景：API开发、数据处理、业务逻辑</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">Web框架</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">FastAPI (Python)</span>
+                            <span class="tech-tag">Django (Python)</span>
+                            <span class="tech-tag hot">Express (Node.js)</span>
+                            <span class="tech-tag">Spring Boot (Java)</span>
+                        </div>
+                        <div class="use-case">💡 场景：构建RESTful API、处理HTTP请求</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">数据库</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">PostgreSQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="use-case">💡 场景：存储用户数据、应用状态、会话信息</div>
+                    </div>
+                </div>
+
+                <!-- AI/ML开发 -->
+                <div class="category color-ai">
+                    <div class="category-title">
+                        <span class="category-icon">🤖</span>
+                        AI/机器学习开发
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">AI开发语言</div>
+                        <div class="tech-list">
+                            <span class="tech-tag ai">Python（主导）</span>
+                            <span class="tech-tag">R（数据科学）</span>
+                            <span class="tech-tag">Julia（科学计算）</span>
+                        </div>
+                        <div class="use-case">💡 场景：几乎所有AI项目都用Python</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">深度学习框架</div>
+                        <div class="tech-list">
+                            <span class="tech-tag ai">PyTorch</span>
+                            <span class="tech-tag ai">TensorFlow</span>
+                            <span class="tech-tag">JAX</span>
+                            <span class="tech-tag">Keras</span>
+                        </div>
+                        <div class="use-case">💡 场景：训练AI模型、神经网络开发</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">LLM应用开发</div>
+                        <div class="tech-list">
+                            <span class="tech-tag ai">LangChain</span>
+                            <span class="tech-tag ai">LlamaIndex</span>
+                            <span class="tech-tag ai">Anthropic SDK</span>
+                            <span class="tech-tag ai">OpenAI API</span>
+                        </div>
+                        <div class="use-case">💡 场景：构建AI Agent、RAG应用、聊天机器人</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">快速原型工具</div>
+                        <div class="tech-list">
+                            <span class="tech-tag ai">Streamlit</span>
+                            <span class="tech-tag ai">Gradio</span>
+                            <span class="tech-tag">Jupyter Notebook</span>
+                        </div>
+                        <div class="use-case">💡 场景：快速搭建AI演示界面、数据可视化</div>
+                    </div>
+                </div>
+
+                <!-- 数据处理 -->
+                <div class="category color-data">
+                    <div class="category-title">
+                        <span class="category-icon">📊</span>
+                        数据处理与分析
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">数据处理库</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Polars</span>
+                            <span class="tech-tag">Apache Spark</span>
+                        </div>
+                        <div class="use-case">💡 场景：清洗数据、特征工程、大规模数据处理</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">可视化工具</div>
+                        <div class="tech-list">
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Tableau</span>
+                        </div>
+                        <div class="use-case">💡 场景：数据报表、交互式图表、仪表板</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">向量数据库（AI专用）</div>
+                        <div class="tech-list">
+                            <span class="tech-tag ai">Pinecone</span>
+                            <span class="tech-tag ai">Weaviate</span>
+                            <span class="tech-tag ai">Chroma</span>
+                            <span class="tech-tag ai">Qdrant</span>
+                        </div>
+                        <div class="use-case">💡 场景：存储embedding、语义搜索、RAG系统</div>
+                    </div>
+                </div>
+
+                <!-- 移动开发 -->
+                <div class="category color-mobile">
+                    <div class="category-title">
+                        <span class="category-icon">📱</span>
+                        移动应用开发
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">原生开发</div>
+                        <div class="tech-list">
+                            <span class="tech-tag">Swift（iOS）</span>
+                            <span class="tech-tag">Kotlin（Android）</span>
+                            <span class="tech-tag">Objective-C</span>
+                            <span class="tech-tag">Java</span>
+                        </div>
+                        <div class="use-case">💡 场景：性能要求高的App，需要深度系统集成</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">跨平台开发</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">React Native</span>
+                            <span class="tech-tag hot">Flutter</span>
+                            <span class="tech-tag">Expo</span>
+                        </div>
+                        <div class="use-case">💡 场景：一套代码开发iOS+Android，快速迭代</div>
+                    </div>
+                </div>
+
+                <!-- DevOps与部署 -->
+                <div class="category color-devops">
+                    <div class="category-title">
+                        <span class="category-icon">🚀</span>
+                        部署与运维
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">容器化</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                        </div>
+                        <div class="use-case">💡 场景：应用打包、环境一致性、扩展部署</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">云平台</div>
+                        <div class="tech-list">
+                            <span class="tech-tag hot">Vercel</span>
+                            <span class="tech-tag hot">AWS</span>
+                            <span class="tech-tag">Google Cloud</span>
+                            <span class="tech-tag">Azure</span>
+                        </div>
+                        <div class="use-case">💡 场景：托管应用、数据库、AI模型推理</div>
+                    </div>
+
+                    <div class="subcategory">
+                        <div class="subcategory-title">CI/CD</div>
+                        <div class="tech-list">
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">GitLab CI</span>
+                            <span class="tech-tag">Jenkins</span>
+                        </div>
+                        <div class="use-case">💡 场景：自动化测试、部署流程</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-title">⏳ 技术演进时间线（AI产品视角）</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1990s</div>
+                    <div class="timeline-content">
+                        <strong>Web诞生</strong> - HTML, CSS, JavaScript基础。这些技术今天仍在使用，是所有Web的基石。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2000s</div>
+                    <div class="timeline-content">
+                        <strong>动态网站时代</strong> - PHP, Python, Java后端框架。传统企业应用主流技术，至今仍广泛使用。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2010-2015</div>
+                    <div class="timeline-content">
+                        <strong>移动互联网爆发</strong> - iOS/Android原生开发、RESTful API、React诞生。这一代技术定义了现代Web开发。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2015-2020</div>
+                    <div class="timeline-content">
+                        <strong>云原生与深度学习</strong> - Docker/K8s、PyTorch/TensorFlow成熟、React生态繁荣。AI开始进入应用层。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2020-2023</div>
+                    <div class="timeline-content">
+                        <strong>AI基础设施</strong> - Transformer模型爆发、LangChain等工具链出现、Vercel等Serverless平台成熟。
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023-现在</div>
+                    <div class="timeline-content">
+                        <strong>AI原生时代</strong> - LLM应用开发、AI Agent框架、向量数据库、Streamlit等快速原型工具成为主流。传统技术+AI能力结合。
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+                <h3 style="margin-bottom: 15px; color: #333;">🎯 AI产品开发典型技术栈</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <strong style="color: #667eea;">快速原型（MVP）</strong>
+                        <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                            • 前端：Streamlit / Gradio<br>
+                            • 后端：Python + FastAPI<br>
+                            • AI：OpenAI/Anthropic API<br>
+                            • 部署：Hugging Face Spaces
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #4ecdc4;">
+                        <strong style="color: #4ecdc4;">生产级应用</strong>
+                        <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                            • 前端：Next.js + React + Tailwind<br>
+                            • 后端：Node.js/Python + PostgreSQL<br>
+                            • AI：LangChain + 向量数据库<br>
+                            • 部署：Vercel + AWS
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6b6b;">
+                        <strong style="color: #ff6b6b;">AI研究/模型开发</strong>
+                        <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                            • 环境：Python + Jupyter<br>
+                            • 框架：PyTorch + Transformers<br>
+                            • 数据：Pandas + NumPy<br>
+                            • 部署：Docker + GPU云服务器
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 25px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+                <h3 style="margin-bottom: 15px;">💡 核心建议</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">✓ <strong>传统技术依然重要</strong>：HTML/CSS/JS、Python、数据库等基础技术不会过时</li>
+                    <li style="margin-bottom: 10px;">✓ <strong>AI时代的新增项</strong>：LangChain、向量数据库、提示工程是新技能</li>
+                    <li style="margin-bottom: 10px;">✓ <strong>选择原则</strong>：快速验证用Streamlit，生产应用用Next.js，深度定制用原生技术</li>
+                    <li style="margin-bottom: 10px;">✓ <strong>学习路径</strong>：先掌握Python+基础Web，再学AI工具链，最后补充DevOps</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加交互效果
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const techName = this.textContent;
+                alert(`${techName}\n\n点击图表中的技术标签可查看更多信息。\n实际应用中，您可以在这里添加详细的技术说明、学习资源链接等。`);
+            });
+        });
+
+        // 添加统计信息
+        const totalTechs = document.querySelectorAll('.tech-tag').length;
+        const aiTechs = document.querySelectorAll('.tech-tag.ai').length;
+        const hotTechs = document.querySelectorAll('.tech-tag.hot').length;
+
+        console.log(`技术总数: ${totalTechs}, AI原生: ${aiTechs}, 热门技术: ${hotTechs}`);
+    </script>
+</body>
+</html>
