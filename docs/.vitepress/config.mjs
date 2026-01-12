@@ -69,12 +69,16 @@ export default defineConfig({
           collapsed: false,
           items: [
             { 
-              text: '🚀 Claude Artifacts 部署指南', 
+              text: '🚀 Claude Artifacts 部署', 
               link: '/ai-learning/claude-artifacts-deployment' 
             },
             { 
-              text: '📄 GitHub Pages 快速部署', 
+              text: '📄 GitHub Pages 部署', 
               link: '/ai-learning/github-pages-deployment' 
+            },
+            { 
+              text: '🤖 RAG 智能问答部署', 
+              link: '/ai-learning/rag-huggingface-deployment' 
             }
           ]
         }
