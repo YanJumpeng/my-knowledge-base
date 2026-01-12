@@ -26,7 +26,14 @@ export default defineConfig({
         text: '🤖 AI 学习', 
         items: [
           { text: '学习路线图', link: '/ai-learning/roadmap' },
+          { text: '12 个月计划', link: '/ai-learning/12-month-plan' },
           { text: '技术全景图', link: '/tech-landscape' }
+        ]
+      },
+      { 
+        text: '📚 资源库',
+        items: [
+          { text: '技术选型指南', link: '/resources/tech-decision-guide' }
         ]
       },
       { text: '👤 关于我', link: '/projects/about' }
@@ -57,6 +64,7 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '🗺️ 学习路线图', link: '/ai-learning/roadmap' },
+            { text: '📆 12 个月转型计划', link: '/ai-learning/12-month-plan' },
             { text: '🎨 技术全景图', link: '/tech-landscape' },
             { text: '🛠️ AI 工具库', link: '/ai-learning/ai-tools' },
             { text: '✍️ 学习笔记(新)', link: '/ai-learning/Learn' },
@@ -85,6 +93,28 @@ export default defineConfig({
               link: '/ai-learning/vitepress-website-guide' 
             }
           ]
+        },
+        {
+          text: '💡 案例分析',
+          collapsed: false,
+          items: [
+            { 
+              text: '🎯 Beacons.ai 产品分析', 
+              link: '/ai-learning/beacons-ai-analysis' 
+            }
+          ]
+        }
+      ],
+      '/resources/': [
+        {
+          text: '📚 技术资源',
+          collapsed: false,
+          items: [
+            { 
+              text: '🛠️ 技术选型决策指南', 
+              link: '/resources/tech-decision-guide' 
+            }
+          ]
         }
       ]
     },
@@ -108,4 +138,3 @@ export default defineConfig({
     }
   }
 })
-
