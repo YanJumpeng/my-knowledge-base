@@ -79,6 +79,10 @@ export default defineConfig({
             { 
               text: '🤖 RAG 智能问答部署', 
               link: '/ai-learning/rag-huggingface-deployment' 
+            },
+            { 
+              text: '🌐 VitePress 网站搭建', 
+              link: '/ai-learning/vitepress-website-guide' 
             }
           ]
         }
